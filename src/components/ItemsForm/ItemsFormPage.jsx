@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row, Tab, Tabs } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import ItemsFormActionBar from './ItemsFormActionBar';
+// import ItemsFormActionBar from './ItemsFormActionBar';
 // import PublishOptionComponent from 'components/PublishOptionComponent';
 import FieldsComponent from 'components/FieldsComponent';
 import GeneralInformation from 'components/GeneralInfomationComponent';
@@ -9,12 +9,12 @@ import GeneralInformation from 'components/GeneralInfomationComponent';
 const ItemsFormPage = ({
   dataForm,
   generateFormSetting,
-  path,
+  // path,
   title,
   validator,
-  store,
+  // store,
   // formPublish,
-  isEdit,
+  // isEdit,
 }) => {
   const { t } = useTranslation('common');
 
@@ -24,7 +24,7 @@ const ItemsFormPage = ({
         <div>
           <h2 className="fw-bold text-capitalize">{t(title)}</h2>
         </div>
-        <ItemsFormActionBar path={path} validator={validator} store={store} isEdit={isEdit} />
+        {/* <ItemsFormActionBar path={path} validator={validator} store={store} isEdit={isEdit} /> */}
       </div>
       <Row>
         <Col lg={9} className="mb-24">

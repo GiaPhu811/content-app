@@ -35,41 +35,32 @@ class ItemsDetailViewModel {
     }
   };
 
-  getFields = async (contentTypeId) => {
-    await this.itemsStore.getFields(
-      contentTypeId,
-      this.callbackOnGetFieldsSuccessHandler,
-      this.callbackOnErrorHandler
-    );
+  save = async (isEdit = false, isClose = false) => {
+    if (isEdit) {
+      await this.handleCreate(isClose);
+    } else {
+      this.handleUpdate(isClose);
+    }
   };
 
-  handleCreate = async (redirect) => {
+  handleCreate = async (isClose) => {
     this.formStatus = PAGE_STATUS.LOADING;
     await this.itemsStore.createItem(
       this.itemsDetailViewModel.formPropsData,
-      redirect ? redirect : false,
+      isClose,
       this.callbackOnCreateSuccessHandler,
       this.callbackOnErrorHandler
     );
   };
 
-  handleUpdate = async (redirect) => {
+  handleUpdate = async (isClose) => {
     this.formStatus = PAGE_STATUS.LOADING;
     await this.itemsStore.updateItem(
       this.itemsDetailViewModel?.formPropsData,
-      redirect ? redirect : false,
+      isClose,
       this.callbackOnUpdateSuccessHandler,
       this.callbackOnErrorHandler
     );
-  };
-
-  callbackOnGetFieldsSuccessHandler = (result) => {
-    if (result) {
-      this.listFields = result?.item;
-    } else {
-      // history.push('/');
-    }
-    this.formStatus = PAGE_STATUS.READY;
   };
 
   callbackOnSuccessHandler = (result) => {
